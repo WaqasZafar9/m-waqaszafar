@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Me</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="icon" href="/Assets/favicons/favicon.png" type="image/png" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <header class="header" id="header">
+        <a href="../../index.html" class="logo"><span class="main-icon"></span><span>M Waqas Zafar</span></a>
+        <div class="navbar">
+            <a href="../../index.html">Home</a>
+            <a href="./skills.html">Skills</a>
+            <a href="./education.html">Education</a>
+            <a href="./projects.html">Projects</a>
+            <a href="./career.html">Career</a>
+            <a href="./hobbies.html">Hobbies</a>
+        </div>
+        <div class="main">
+            <a href="contact.html" class="user main-items active"><i class="fas fa-envelope cm-icon"></i>Contact Me</a>
+            <div class="main-items menu-icon-container" id="menu-icon-js">
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page">
+        <main class="contact-main">
+            <div class="contact-full">
+                <div class="contact-section">
+                    <div class="cs-top mobile-show">
+                        <h1>Reach Me</h1>
+                        <div class="border-line"></div>
+                    </div>
+                    <div class="cs-item email">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div class="text">
+                            <div class="placeHolder">E-mail</div>
+                            <div class="info">waqaszafar771@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="cs-item number">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
+                        <div class="text">
+                            <div class="placeHolder">Phone</div>
+                            <div class="info">+92 340 0166731</div>
+                        </div>
+                    </div>
+                    <div class="cs-item address">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="text">
+                            <div class="placeHolder">Address</div>
+                            <div class="info">Lahore, Pakistan</div>
+                        </div>
+                    </div>
+                </div>
+                <section class="contact-form">
+                    <h1>Contact Me</h1>
+                    <div class="border-line"></div>
+                    <div class="contact-submit-after" id="contact-submit-after" style="display: none;">
+                        <div class="box">
+                            <i class="fa-solid fa-circle-check csa-icon"></i>
+                            <div class="csa-text">Message sent successfully</div>
+                            <div class="csa-ok" onclick="closeSuccessMessage()">OK</div>
+                        </div>
+                    </div>
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="form-section">
+                        <input type="hidden" name="access_key" value="dca62ce6-c7d6-4044-9e61-8be5b64cec4f">
+                        
+                        <!-- Hidden fields for user to receive my contact details -->
+                        <input type="hidden" name="my_email" value="waqaszafar771@gmail.com">
+                        <input type="hidden" name="my_phone" value="+92 340 0166731">
+                        <input type="hidden" name="my_address" value="Lahore, Pakistan">
+
+                        <div class="form-group name-section">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Please include your email address in the message text first."></textarea>
+                        </div>
+                        <div class="error" id="error-message" style="display: none;">
+                            <i class="fa-solid fa-circle-xmark error-icon"></i>Please fill out all the fields
+                        </div>
+                        <div class="email-error" id="email-error" style="display: none;">
+                            <i class="fa-solid fa-circle-xmark error-icon"></i>Email address is not valid
+                        </div>
+                        <button type="submit" id="contact-submit" class="contact-button">
+                            <div class="contact-load">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="submit-text">Submit</div>
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="left">&copy; 2024 • All Rights Reserved</div>
+            <div class="right">
+                <div class="social">
+                    <a href="https://www.facebook.com/profile.php?id=100025333923074&mibextid=ZbWKwL" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+                <div class="social">
+                    <a href="https://www.instagram.com/m_waqaszafar/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <div class="social">
+                    <a href="https://www.linkedin.com/in/m-waqas-zafar-645988293/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <div class="social">
+                    <a href="https://github.com/WaqasZafar9" target="_blank"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevents default form submission
+
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', this.action, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Handle successful response
+                    document.getElementById('contact-submit-after').style.display = 'block';
+                    document.getElementById('contact-form').reset();
+                    setTimeout(() => {
+                        document.getElementById('contact-submit-after').style.display = 'none';
+                    }, 5000); // Hide success message after 5 seconds
+                } else {
+                    // Handle error response
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            };
+            xhr.onerror = function() {
+                // Handle network errors
+                document.getElementById('error-message').style.display = 'block';
+            };
+            xhr.send(formData);
+        });
+
+        function closeSuccessMessage() {
+            document.getElementById('contact-submit-after').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
